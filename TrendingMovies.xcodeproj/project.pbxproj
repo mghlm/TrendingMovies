@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F722F88A5D002E271A /* AppDelegate.swift */; };
-		CC4EE0FA22F88A5D002E271A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F922F88A5D002E271A /* ViewController.swift */; };
+		CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F922F88A5D002E271A /* HomeViewController.swift */; };
 		CC4EE0FD22F88A5D002E271A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE0FB22F88A5D002E271A /* Main.storyboard */; };
 		CC4EE10022F88A5D002E271A /* TrendingMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0FE22F88A5D002E271A /* TrendingMovies.xcdatamodeld */; };
 		CC4EE10222F88A5F002E271A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE10122F88A5F002E271A /* Assets.xcassets */; };
 		CC4EE10522F88A5F002E271A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE10322F88A5F002E271A /* LaunchScreen.storyboard */; };
 		CC4EE11022F88A5F002E271A /* TrendingMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE10F22F88A5F002E271A /* TrendingMoviesTests.swift */; };
 		CC4EE11B22F88A5F002E271A /* TrendingMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE11A22F88A5F002E271A /* TrendingMoviesUITests.swift */; };
+		CC4EE12A22F88BB1002E271A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE12922F88BB1002E271A /* HomeViewModel.swift */; };
+		CC4EE12D22F88C2F002E271A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE12C22F88C2F002E271A /* UIView+Extensions.swift */; };
+		CC4EE13022F88CE8002E271A /* HomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE12F22F88CE8002E271A /* HomeScreenTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,7 @@
 /* Begin PBXFileReference section */
 		CC4EE0F422F88A5D002E271A /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4EE0F722F88A5D002E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC4EE0F922F88A5D002E271A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC4EE0F922F88A5D002E271A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CC4EE0FC22F88A5D002E271A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC4EE0FF22F88A5D002E271A /* TrendingMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrendingMovies.xcdatamodel; sourceTree = "<group>"; };
 		CC4EE10122F88A5F002E271A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		CC4EE11622F88A5F002E271A /* TrendingMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrendingMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4EE11A22F88A5F002E271A /* TrendingMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesUITests.swift; sourceTree = "<group>"; };
 		CC4EE11C22F88A5F002E271A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4EE12922F88BB1002E271A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CC4EE12C22F88C2F002E271A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		CC4EE12F22F88CE8002E271A /* HomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,9 @@
 		CC4EE0F622F88A5D002E271A /* TrendingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				CC4EE12B22F88C24002E271A /* Extensions */,
+				CC4EE12822F88B9E002E271A /* Home */,
 				CC4EE0F722F88A5D002E271A /* AppDelegate.swift */,
-				CC4EE0F922F88A5D002E271A /* ViewController.swift */,
 				CC4EE0FB22F88A5D002E271A /* Main.storyboard */,
 				CC4EE10122F88A5F002E271A /* Assets.xcassets */,
 				CC4EE10322F88A5F002E271A /* LaunchScreen.storyboard */,
@@ -126,6 +133,32 @@
 				CC4EE11C22F88A5F002E271A /* Info.plist */,
 			);
 			path = TrendingMoviesUITests;
+			sourceTree = "<group>";
+		};
+		CC4EE12822F88B9E002E271A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CC4EE12E22F88CD6002E271A /* Views */,
+				CC4EE0F922F88A5D002E271A /* HomeViewController.swift */,
+				CC4EE12922F88BB1002E271A /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CC4EE12B22F88C24002E271A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CC4EE12C22F88C2F002E271A /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CC4EE12E22F88CD6002E271A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC4EE12F22F88CE8002E271A /* HomeScreenTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4EE0FA22F88A5D002E271A /* ViewController.swift in Sources */,
+				CC4EE13022F88CE8002E271A /* HomeScreenTableViewCell.swift in Sources */,
+				CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */,
 				CC4EE10022F88A5D002E271A /* TrendingMovies.xcdatamodeld in Sources */,
+				CC4EE12D22F88C2F002E271A /* UIView+Extensions.swift in Sources */,
 				CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */,
+				CC4EE12A22F88BB1002E271A /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
