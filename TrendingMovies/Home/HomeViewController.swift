@@ -39,15 +39,31 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        setupUI()
+        setupCallbacks()
+        viewModel.didLoad()
     }
     
     // MARK: - Private methods
     
     private func setupUI() {
         view.addSubview(tableView)
+        tableView.delegate = viewModel.dataSource
+        tableView.dataSource = viewModel.dataSource
         setupConstraints()
+    }
+    
+    private func setupCallbacks() {
+        viewModel.dataSource.didLoadData = { [weak self] in
+            DispatchQueue.main.async {
+                self?.setupUI()
+                self?.tableView.reloadData()
+            }
+        }
+        viewModel.dataSource.didUpdateData = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     private func setupConstraints() {

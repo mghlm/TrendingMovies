@@ -22,14 +22,14 @@ enum Endpoint {
     var host: String {
         switch self {
         case .getTrendingMovies:
-            return "api.themoviedb.org/3"
+            return "api.themoviedb.org"
         }
     }
     
     var path: String {
         switch self {
         case .getTrendingMovies:
-            return "/trending/movie/week"
+            return "/3/trending/movie/week"
         }
     }
     

@@ -23,6 +23,7 @@
 		CC4EE13722F88EEE002E271A /* URLSession+Extensoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13622F88EEE002E271A /* URLSession+Extensoins.swift */; };
 		CC4EE13922F89016002E271A /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13822F89016002E271A /* Transformer.swift */; };
 		CC4EE13B22F89138002E271A /* HomeScreenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */; };
+		CC4EE13E22F89197002E271A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13D22F89197002E271A /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CC4EE13622F88EEE002E271A /* URLSession+Extensoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensoins.swift"; sourceTree = "<group>"; };
 		CC4EE13822F89016002E271A /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenDataSource.swift; sourceTree = "<group>"; };
+		CC4EE13D22F89197002E271A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		CC4EE0F622F88A5D002E271A /* TrendingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				CC4EE13C22F8918D002E271A /* Models */,
 				CC4EE13122F88D0C002E271A /* Networking  */,
 				CC4EE12B22F88C24002E271A /* Extensions */,
 				CC4EE12822F88B9E002E271A /* Home */,
@@ -182,6 +185,14 @@
 				CC4EE13822F89016002E271A /* Transformer.swift */,
 			);
 			path = "Networking ";
+			sourceTree = "<group>";
+		};
+		CC4EE13C22F8918D002E271A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC4EE13D22F89197002E271A /* Movie.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 			files = (
 				CC4EE13022F88CE8002E271A /* HomeScreenTableViewCell.swift in Sources */,
 				CC4EE13322F88D35002E271A /* APIService.swift in Sources */,
+				CC4EE13E22F89197002E271A /* Movie.swift in Sources */,
 				CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */,
 				CC4EE13922F89016002E271A /* Transformer.swift in Sources */,
 				CC4EE13522F88D43002E271A /* Endpoint .swift in Sources */,

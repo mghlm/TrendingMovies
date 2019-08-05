@@ -9,12 +9,37 @@
 import Foundation
 
 protocol HomeViewModelType {
-    func getMovies()
+    var dataSource: HomeScreenDataSource! { get }
+    func didLoad()
 }
 
 final class HomeViewModel: HomeViewModelType {
     
     // MARK: - Dependencies
     
-    private var dataSource: 
+    private var apiService: APIServiceType!
+    var dataSource: HomeScreenDataSource!
+    
+    // MARK: - Init
+    
+    init(dataSource: HomeScreenDataSource, apiService: APIServiceType!) {
+        self.dataSource = dataSource
+        self.apiService = apiService
+    }
+    
+    // MARK: - Private methods
+    
+    func didLoad() {
+        apiService.request(MovieResponse.self, endpoint: .getTrendingMovies) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let movieResponse):
+                self.dataSource.movies = movieResponse.results
+                self.dataSource.didLoadData?()
+                print(movieResponse.results)
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+    }
 }

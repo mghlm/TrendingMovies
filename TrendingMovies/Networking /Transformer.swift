@@ -30,6 +30,7 @@ struct JSONTransformer: Transformer {
     
     init(decoder: JSONDecoder = JSONDecoder()) {
         self.decoder = decoder
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
     // MARK: - Public methods

@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: HomeViewModel()))
+        let viewModel = HomeViewModel(dataSource: HomeScreenDataSource(), apiService: APIService())
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: viewModel))
         
         return true
     }

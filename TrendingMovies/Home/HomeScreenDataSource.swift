@@ -12,16 +12,21 @@ final class HomeScreenDataSource: NSObject {
     
     // MARK: - Public properties
     
-    var movies: [Movie]
+    var movies = [Movie]()
+    var didLoadData: (() -> Void)?
+    var didUpdateData: (() -> Void)?
 }
 
 extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let movie = movies[indexPath.row]
+        cell.textLabel?.text = movie.title
+        return cell 
     }
     
     
