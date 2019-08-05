@@ -9,9 +9,12 @@
 import Foundation
 
 protocol HomeViewModelType {
-    
+    func getMovies()
 }
 
 final class HomeViewModel: HomeViewModelType {
     
+    // MARK: - Dependencies
+    
+    private var dataSource: 
 }

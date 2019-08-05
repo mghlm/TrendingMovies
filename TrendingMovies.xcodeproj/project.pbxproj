@@ -18,6 +18,11 @@
 		CC4EE12A22F88BB1002E271A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE12922F88BB1002E271A /* HomeViewModel.swift */; };
 		CC4EE12D22F88C2F002E271A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE12C22F88C2F002E271A /* UIView+Extensions.swift */; };
 		CC4EE13022F88CE8002E271A /* HomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE12F22F88CE8002E271A /* HomeScreenTableViewCell.swift */; };
+		CC4EE13322F88D35002E271A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13222F88D35002E271A /* APIService.swift */; };
+		CC4EE13522F88D43002E271A /* Endpoint .swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13422F88D43002E271A /* Endpoint .swift */; };
+		CC4EE13722F88EEE002E271A /* URLSession+Extensoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13622F88EEE002E271A /* URLSession+Extensoins.swift */; };
+		CC4EE13922F89016002E271A /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13822F89016002E271A /* Transformer.swift */; };
+		CC4EE13B22F89138002E271A /* HomeScreenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		CC4EE12922F88BB1002E271A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CC4EE12C22F88C2F002E271A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		CC4EE12F22F88CE8002E271A /* HomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewCell.swift; sourceTree = "<group>"; };
+		CC4EE13222F88D35002E271A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CC4EE13422F88D43002E271A /* Endpoint .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint .swift"; sourceTree = "<group>"; };
+		CC4EE13622F88EEE002E271A /* URLSession+Extensoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensoins.swift"; sourceTree = "<group>"; };
+		CC4EE13822F89016002E271A /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +115,7 @@
 		CC4EE0F622F88A5D002E271A /* TrendingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				CC4EE13122F88D0C002E271A /* Networking  */,
 				CC4EE12B22F88C24002E271A /* Extensions */,
 				CC4EE12822F88B9E002E271A /* Home */,
 				CC4EE0F722F88A5D002E271A /* AppDelegate.swift */,
@@ -141,6 +152,7 @@
 				CC4EE12E22F88CD6002E271A /* Views */,
 				CC4EE0F922F88A5D002E271A /* HomeViewController.swift */,
 				CC4EE12922F88BB1002E271A /* HomeViewModel.swift */,
+				CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -149,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4EE12C22F88C2F002E271A /* UIView+Extensions.swift */,
+				CC4EE13622F88EEE002E271A /* URLSession+Extensoins.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,6 +172,16 @@
 				CC4EE12F22F88CE8002E271A /* HomeScreenTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CC4EE13122F88D0C002E271A /* Networking  */ = {
+			isa = PBXGroup;
+			children = (
+				CC4EE13222F88D35002E271A /* APIService.swift */,
+				CC4EE13422F88D43002E271A /* Endpoint .swift */,
+				CC4EE13822F89016002E271A /* Transformer.swift */,
+			);
+			path = "Networking ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,9 +316,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4EE13022F88CE8002E271A /* HomeScreenTableViewCell.swift in Sources */,
+				CC4EE13322F88D35002E271A /* APIService.swift in Sources */,
 				CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */,
+				CC4EE13922F89016002E271A /* Transformer.swift in Sources */,
+				CC4EE13522F88D43002E271A /* Endpoint .swift in Sources */,
 				CC4EE10022F88A5D002E271A /* TrendingMovies.xcdatamodeld in Sources */,
 				CC4EE12D22F88C2F002E271A /* UIView+Extensions.swift in Sources */,
+				CC4EE13B22F89138002E271A /* HomeScreenDataSource.swift in Sources */,
+				CC4EE13722F88EEE002E271A /* URLSession+Extensoins.swift in Sources */,
 				CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */,
 				CC4EE12A22F88BB1002E271A /* HomeViewModel.swift in Sources */,
 			);
