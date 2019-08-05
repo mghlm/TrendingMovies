@@ -23,6 +23,10 @@ struct Movie: Decodable {
     let title: String
     let voteAverage: Double
     let voteCount: Int
+    
+    func getImageUrl() -> URL? {
+        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+    }
 }
 
 

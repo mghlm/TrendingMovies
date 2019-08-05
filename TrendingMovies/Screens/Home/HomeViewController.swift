@@ -18,7 +18,7 @@ final class HomeViewController: UIViewController {
     
     lazy private var tableView: UITableView = {
         let tv = UITableView()
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.register(HomeScreenTableViewCell.self, forCellReuseIdentifier: HomeScreenTableViewCell.id)
         
         return tv
     }()
@@ -46,6 +46,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Private methods
     
     private func setupUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Trending movies"
         view.addSubview(tableView)
         tableView.delegate = viewModel.dataSource
         tableView.dataSource = viewModel.dataSource

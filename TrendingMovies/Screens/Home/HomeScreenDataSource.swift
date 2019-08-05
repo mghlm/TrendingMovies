@@ -23,11 +23,13 @@ extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeScreenTableViewCell.id, for: indexPath) as! HomeScreenTableViewCell
         let movie = movies[indexPath.row]
-        cell.textLabel?.text = movie.title
+        cell.movie = movie
         return cell 
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90 
+    }
 }
