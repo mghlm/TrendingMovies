@@ -22,6 +22,7 @@ final class MovieDetailsView: UIView {
         let iv = ImageLoader()
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.accessibilityIdentifier = "posterImageViewIdentifier"
         
         return iv
     }()
@@ -30,6 +31,7 @@ final class MovieDetailsView: UIView {
         let lbl = UILabel()
         lbl.font = UIFont.boldSystemFont(ofSize: 28)
         lbl.numberOfLines = 2
+        lbl.accessibilityIdentifier = "movieDetailsTitleLabelIdentifier"
         
         return lbl
     }()
@@ -38,6 +40,7 @@ final class MovieDetailsView: UIView {
         let lbl = UILabel()
         lbl.font = UIFont.italicSystemFont(ofSize: 22)
         lbl.numberOfLines = 0
+        lbl.accessibilityIdentifier = "movieDetailsDescriptionLabelIdentifier"
         
         return lbl
     }()

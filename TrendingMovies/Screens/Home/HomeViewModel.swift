@@ -9,8 +9,18 @@
 import UIKit
 
 protocol HomeViewModelType {
+    
+    /// Data source responsible for implementing tableview delegate- and datasource methods and keeping state
     var dataSource: HomeScreenDataSource! { get }
-    func didLoad()
+    
+    /// Method to fetch initial data
+    func didLoad(completion: @escaping (Result<Void, NetworkError>) -> Void)
+    
+    /// Navigates to detail screen of selected movie
+    ///
+    /// - Parameters:
+    ///   - navigationController: Navigation controller to push new viewcontroller in
+    ///   - movie: The model object of selected movie
     func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie)
 }
 
@@ -30,20 +40,21 @@ final class HomeViewModel: HomeViewModelType {
     
     // MARK: - Private methods
     
-    func didLoad() {
+    func didLoad(completion: @escaping (Result<Void, NetworkError>) -> Void) {
         apiService.request(MovieResponse.self, endpoint: .getTrendingMovies) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let movieResponse):
                 self.dataSource.movies = movieResponse.results
-                self.dataSource.didLoadData?()
-                print(movieResponse.results)
+                completion(.success(()))
             case .failure(let error):
-                print(error.rawValue)
+                completion(.failure(error))
             }
         }
     }
 }
+
+// MARK: - Extensions 
 
 extension HomeViewModel {
     func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie) {

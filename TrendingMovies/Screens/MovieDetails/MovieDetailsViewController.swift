@@ -55,6 +55,7 @@ final class MovieDetailsViewController: UIViewController {
     private func setupMovieDetailsView() {
         contentView.addSubview(scrollView)
         movieDetailsView = MovieDetailsView(frame: .zero, movie: viewModel.movie)
+        movieDetailsView.accessibilityIdentifier = "movieDetailsViewIdentifier"
         scrollView.addSubview(movieDetailsView)
         scrollView.fillSuperview()
         movieDetailsView.fillSuperview()

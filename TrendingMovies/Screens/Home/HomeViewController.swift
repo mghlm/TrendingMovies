@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     lazy private var tableView: UITableView = {
         let tv = UITableView()
         tv.register(HomeScreenTableViewCell.self, forCellReuseIdentifier: HomeScreenTableViewCell.id)
+        tv.accessibilityIdentifier = "homeScreenTableViewIdentifier"
         
         return tv
     }()
@@ -40,10 +41,24 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupCallbacks()
-        viewModel.didLoad()
+        loadMovies()
     }
     
     // MARK: - Private methods
+    
+    private func loadMovies() {
+        viewModel.didLoad { [weak self] result in
+            switch result {
+            case .success():
+                DispatchQueue.main.async {
+                    self?.setupUI()
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                self?.showAlert(with: "Error", message: error.rawValue, delay: 5)
+            }
+        }
+    }
     
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -51,16 +66,10 @@ final class HomeViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = viewModel.dataSource
         tableView.dataSource = viewModel.dataSource
-        setupConstraints()
+        tableView.fillSuperview()
     }
     
     private func setupCallbacks() {
-        viewModel.dataSource.didLoadData = { [weak self] in
-            DispatchQueue.main.async {
-                self?.setupUI()
-                self?.tableView.reloadData()
-            }
-        }
         viewModel.dataSource.didUpdateData = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -74,8 +83,14 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    private func setupConstraints() {
-        tableView.fillSuperview()
+    private func showAlert(with title: String, message: String?, delay: Double) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        present(alert, animated: true)
+        
+        let deadline = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

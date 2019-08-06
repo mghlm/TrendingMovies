@@ -13,10 +13,11 @@ final class HomeScreenDataSource: NSObject {
     // MARK: - Public properties
     
     var movies = [Movie]()
-    var didLoadData: (() -> Void)?
     var didUpdateData: (() -> Void)?
     var didTapCell: ((Movie) -> ())?
 }
+
+// MARK: - Extensions
 
 extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,5 +38,6 @@ extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
         didTapCell?(movie)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

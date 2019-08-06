@@ -9,6 +9,8 @@
 import Foundation
 
 protocol MovieDetailsViewModelType {
+    
+    /// Movie object to show in details screen
     var movie: Movie! { get }
 }
 
@@ -17,6 +19,8 @@ final class MovieDetailsViewModel: MovieDetailsViewModelType {
     // MARK: - Private properties
     
     var movie: Movie!
+    
+    // MARK: - Init
     
     init(movie: Movie) {
         self.movie = movie
