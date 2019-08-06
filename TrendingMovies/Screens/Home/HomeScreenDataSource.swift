@@ -15,6 +15,7 @@ final class HomeScreenDataSource: NSObject {
     var movies = [Movie]()
     var didLoadData: (() -> Void)?
     var didUpdateData: (() -> Void)?
+    var didTapCell: ((Movie) -> ())?
 }
 
 extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
@@ -31,5 +32,10 @@ extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        didTapCell?(movie)
     }
 }

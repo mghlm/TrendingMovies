@@ -6,11 +6,12 @@
 //  Copyright © 2019 Magnus Holm. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol HomeViewModelType {
     var dataSource: HomeScreenDataSource! { get }
     func didLoad()
+    func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie)
 }
 
 final class HomeViewModel: HomeViewModelType {
@@ -41,5 +42,13 @@ final class HomeViewModel: HomeViewModelType {
                 print(error.rawValue)
             }
         }
+    }
+}
+
+extension HomeViewModel {
+    func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie) {
+        let movieDetailsViewModel = MovieDetailsViewModel(movie: movie)
+        let movieDetailsViewController = MovieDetailsViewController(viewModel: movieDetailsViewModel)
+        navigationController.pushViewController(movieDetailsViewController, animated: true)
     }
 }

@@ -14,6 +14,24 @@ final class MovieDetailsViewController: UIViewController {
     
     private var viewModel: MovieDetailsViewModelType!
     
+    // MARK: - Private propreties
+    
+    private var movieDetailsView: MovieDetailsView!
+    
+    lazy private var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.showsVerticalScrollIndicator = false
+        
+        return sv
+    }()
+    
+    lazy private var contentView: UIView = {
+        let v = UIView()
+
+        return v
+    }()
+    
     // MARK: - Init
     
     init(viewModel: MovieDetailsViewModelType) {
@@ -34,12 +52,25 @@ final class MovieDetailsViewController: UIViewController {
     
     // MARK: - Private methods
     
+    private func setupMovieDetailsView() {
+        contentView.addSubview(scrollView)
+        movieDetailsView = MovieDetailsView(frame: .zero, movie: viewModel.movie)
+        scrollView.addSubview(movieDetailsView)
+        scrollView.fillSuperview()
+        movieDetailsView.fillSuperview()
+        movieDetailsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+    }
+    
     private func setupUI() {
-        
+        view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = viewModel.movie.title
+        view.addSubview(contentView)
         setupConstraints()
+        setupMovieDetailsView()
     }
     
     private func setupConstraints() {
-        
+        contentView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
 }

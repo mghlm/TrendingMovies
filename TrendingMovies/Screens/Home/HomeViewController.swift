@@ -66,6 +66,12 @@ final class HomeViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+        viewModel.dataSource.didTapCell = { [weak self] movie in
+            guard let navController = self?.navigationController else { return }
+            DispatchQueue.main.async {
+                self?.viewModel.navigateToMovieDetails(in: navController, with: movie)
+            }
+        }
     }
     
     private func setupConstraints() {

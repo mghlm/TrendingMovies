@@ -30,6 +30,7 @@ enum Endpoint {
         switch self {
         case .getTrendingMovies:
             return "/3/trending/movie/week"
+//            return "/3/movie/now_playing"
         }
     }
     
@@ -44,7 +45,9 @@ enum Endpoint {
         let apiKey = "8e81b6228c55e10e7fbd202f92e7f19c"
         switch self {
         case .getTrendingMovies:
-            return [URLQueryItem(name: "api_key", value: apiKey)]
+            return [URLQueryItem(name: "api_key", value: apiKey)
+//                    URLQueryItem(name: "region", value: "gb")
+            ]
         }
     }
 }
