@@ -14,7 +14,7 @@ protocol HomeViewModelType {
     var dataSource: HomeScreenDataSource! { get }
     
     /// Method to fetch initial data
-    func didLoad(completion: @escaping (Result<Void, NetworkError>) -> Void)
+    func loadMovies()
     
     /// Navigates to detail screen of selected movie
     ///
@@ -22,6 +22,9 @@ protocol HomeViewModelType {
     ///   - navigationController: Navigation controller to push new viewcontroller in
     ///   - movie: The model object of selected movie
     func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie)
+    
+    /// Callback in case of network error
+    var didSendError: ((NetworkError) -> Void)? { get set }
 }
 
 final class HomeViewModel: HomeViewModelType {
@@ -29,26 +32,53 @@ final class HomeViewModel: HomeViewModelType {
     // MARK: - Dependencies
     
     private var apiService: APIServiceType!
+    private var persistenceService: PersistenceServiceType!
     var dataSource: HomeScreenDataSource!
+    
+    // MARK: - Private properties
+    
+    private var currentPage: Int = 1
+    var didSendError: ((NetworkError) -> Void)?
     
     // MARK: - Init
     
-    init(dataSource: HomeScreenDataSource, apiService: APIServiceType!) {
+    init(dataSource: HomeScreenDataSource, apiService: APIServiceType!, persistenceService: PersistenceServiceType) {
         self.dataSource = dataSource
         self.apiService = apiService
+        self.persistenceService = persistenceService
+        
     }
     
     // MARK: - Private methods
     
-    func didLoad(completion: @escaping (Result<Void, NetworkError>) -> Void) {
-        apiService.request(MovieResponse.self, endpoint: .getTrendingMovies) { [weak self] result in
+    func loadMovies() {
+        apiService.request(endpoint: .getTrendingMovies(page: String(currentPage))) { [weak self] result in
             guard let self = self else { return }
             switch result {
+                
             case .success(let movieResponse):
-                self.dataSource.movies = movieResponse.results
-                completion(.success(()))
+                guard let movies = movieResponse["results"] as? [JSON] else { return }
+                self.persistenceService.insertMoviesInCoreData(movies: movies, completion: {
+                    self.persistenceService.fetch(Movie.self, completion: { [weak self] movies in
+                        guard let self = self else { return }
+                        self.dataSource.movies = movies
+                        self.persistenceService.addImageDataToMovies()
+                    })
+                })
+                
             case .failure(let error):
-                completion(.failure(error))
+                switch error {
+                case .decodeError, .invalidStatusCode:
+                    print("Error: \(error.rawValue)")
+                case .networkError:
+                    self.persistenceService.fetch(Movie.self, completion: { [weak self] movies in
+                        guard !movies.isEmpty else {
+                            self?.didSendError?(error)
+                            return
+                        }
+                        self?.dataSource.movies = movies
+                    })
+                }
             }
         }
     }

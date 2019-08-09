@@ -49,13 +49,16 @@ final class HomeScreenTableViewCell: UITableViewCell {
     }
     
     private func setupImage() {
-        if let imageURL = movie.getImageUrl() {
+        
+        if let imageData = movie.image, let image = UIImage(data: imageData) {
+            posterImageView.image = image
+        } else if let imageURL = movie.getImageUrl() {
             posterImageView.loadImage(with: imageURL)
         }
     }
     
     private func setupConstraints() {
-        posterImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 0, width: 76, height: 76)
+        posterImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 0, width: 66, height: 76)
         titleLabel.anchor(top: topAnchor, left: posterImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
     }
     

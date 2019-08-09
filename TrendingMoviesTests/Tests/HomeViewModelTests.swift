@@ -20,12 +20,10 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func testViewModel_DidLoadIsCalledAndResponseIsSuccess() {
-        let expectation = self.expectation(description: "Movie")
-        viewModel.didLoad { _ in
-            expectation.fulfill()
-        }
+//        let expectation = self.expectation(description: "Movie")
+        viewModel.loadMovies()
         
-        wait(for: [expectation], timeout: 1)
+//        wait(for: [expectation], timeout: 1)
         
         XCTAssertEqual(viewModel.dataSource.movies.count, 1)
         
@@ -44,7 +42,7 @@ class HomeViewModelTests: XCTestCase {
     func testViewModel_DidLoadFailedWithApiError() {
         let expectation = self.expectation(description: "Movie")
         apiService.result = .apiError
-        viewModel.didLoad { _ in
+        viewModel.loadMovies { _ in
             expectation.fulfill()
         }
         

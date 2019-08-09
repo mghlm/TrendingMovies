@@ -8,11 +8,16 @@
 
 import Foundation
 
+typealias JSON = [String: Any]
+
 protocol APIServiceType {
-//    func request(endpoint: Endpoint, completion: @escaping (Result<[String: Any], NetworkError>) -> ())
-//    func buildRequest(for endpoint: Endpoint) -> URLRequest?
     
-    func request<T: Decodable>(_ type: T.Type, endpoint: Endpoint, completion: @escaping (Result<T, NetworkError>) -> Void)
+    /// Sends an API request with URLSession
+    ///
+    /// - Parameters:
+    ///   - endpoint: Endoint with info about request sich as method and parameters
+    ///   - completion: Result type, can either complete with JSON or Error
+    func request(endpoint: Endpoint, completion: @escaping (Result<JSON, NetworkError>) -> Void)
 }
 
 final class APIService: APIServiceType {
@@ -20,18 +25,16 @@ final class APIService: APIServiceType {
     // MARK: Private properties
     
     private let session: URLSession!
-    private let transformer: Transformer!
     
     // MARK: - Init
     
-    init(session: URLSession = URLSession(configuration: .default), transformer: Transformer = JSONTransformer()) {
+    init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
-        self.transformer = transformer
     }
     
     // MARK: - Public methods
     
-    func request<T: Decodable>(_ type: T.Type, endpoint: Endpoint, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func request(endpoint: Endpoint, completion: @escaping (Result<JSON, NetworkError>) -> Void) {
         
         guard var urlRequest = buildRequest(for: endpoint) else { return }
         urlRequest.httpMethod = endpoint.method
@@ -44,13 +47,13 @@ final class APIService: APIServiceType {
                     return
                 }
                 do {
-                    let values = try self.transformer.decode(T.self, from: data)
-                        completion(.success(values))
+                    guard let values = try JSONSerialization.jsonObject(with: data, options: []) as? JSON else { return }
+                    completion(.success(values))
                 } catch {
                     completion(.failure(.decodeError))
                 }
             case .failure(_):
-                completion(.failure(.apiError))
+                completion(.failure(.networkError))
             }
         }
         task.resume()
@@ -68,8 +71,8 @@ final class APIService: APIServiceType {
 }
 
 enum NetworkError: String, Error {
-    case invalidStatusCode = "bad status code"
-    case decodeError = "decode error"
-    case apiError = "api error"
+    case invalidStatusCode = "Bad status code"
+    case decodeError = "Decode error"
+    case networkError = "Network error"
 }
 

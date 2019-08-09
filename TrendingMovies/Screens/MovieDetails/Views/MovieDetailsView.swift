@@ -16,8 +16,6 @@ final class MovieDetailsView: UIView {
     
     // MARK: - Private properties
     
-//    lazy private var stackView: UIStackView!
-    
     lazy private var posterImageView: ImageLoader = {
         let iv = ImageLoader()
         iv.contentMode = .scaleAspectFit
@@ -38,7 +36,7 @@ final class MovieDetailsView: UIView {
     
     lazy private var descriptionLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.italicSystemFont(ofSize: 22)
+        lbl.font = UIFont.italicSystemFont(ofSize: 20)
         lbl.numberOfLines = 0
         lbl.accessibilityIdentifier = "movieDetailsDescriptionLabelIdentifier"
         
@@ -49,6 +47,7 @@ final class MovieDetailsView: UIView {
         let lbl = UILabel()
         lbl.font = UIFont.italicSystemFont(ofSize: 18)
         lbl.textColor = .gray
+        lbl.accessibilityIdentifier = "releaseDateLabelIdentifier"
         
         return lbl
     }()
@@ -56,6 +55,7 @@ final class MovieDetailsView: UIView {
     lazy private var ratingLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.boldSystemFont(ofSize: 24)
+        lbl.accessibilityIdentifier = "ratingLabelIdentifier"
         
         return lbl
     }()
@@ -86,7 +86,9 @@ final class MovieDetailsView: UIView {
     }
     
     private func setupImage() {
-        if let imageURL = movie.getImageUrl() {
+        if let imageData = movie.image, let image = UIImage(data: imageData) {
+            posterImageView.image = image
+        } else if let imageURL = movie.getImageUrl() {
             posterImageView.loadImage(with: imageURL)
         }
     }

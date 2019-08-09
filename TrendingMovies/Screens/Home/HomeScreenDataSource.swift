@@ -12,8 +12,13 @@ final class HomeScreenDataSource: NSObject {
     
     // MARK: - Public properties
     
-    var movies = [Movie]()
-    var didUpdateData: (() -> Void)?
+    var movies: [Movie]? {
+        didSet {
+            didLoadData?()
+        }
+    }
+    var didLoadData: (() -> Void)?
+//    var didUpdateData: (() -> Void)?
     var didTapCell: ((Movie) -> ())?
 }
 
@@ -21,10 +26,11 @@ final class HomeScreenDataSource: NSObject {
 
 extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return movies?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let movies = movies else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeScreenTableViewCell.id, for: indexPath) as! HomeScreenTableViewCell
         let movie = movies[indexPath.row]
         cell.movie = movie
@@ -36,6 +42,7 @@ extension HomeScreenDataSource: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movies = movies else { return }
         let movie = movies[indexPath.row]
         didTapCell?(movie)
         tableView.deselectRow(at: indexPath, animated: true)

@@ -10,7 +10,7 @@ import Foundation
 
 enum Endpoint {
     
-    case getTrendingMovies
+    case getTrendingMovies(page: String)
     
     var scheme: String {
         switch self {
@@ -29,8 +29,7 @@ enum Endpoint {
     var path: String {
         switch self {
         case .getTrendingMovies:
-            return "/3/trending/movie/week"
-//            return "/3/movie/now_playing"
+            return "/3/trending/movie/day"
         }
     }
     
@@ -44,9 +43,10 @@ enum Endpoint {
     var parameters: [URLQueryItem] {
         let apiKey = "8e81b6228c55e10e7fbd202f92e7f19c"
         switch self {
-        case .getTrendingMovies:
-            return [URLQueryItem(name: "api_key", value: apiKey)
-//                    URLQueryItem(name: "region", value: "gb")
+        case .getTrendingMovies(let page):
+            return [URLQueryItem(name: "api_key", value: apiKey),
+                    URLQueryItem(name: "page", value: page),
+                    URLQueryItem(name: "region", value: "gb")
             ]
         }
     }

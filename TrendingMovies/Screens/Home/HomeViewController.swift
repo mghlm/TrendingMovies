@@ -47,17 +47,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Private methods
     
     private func loadMovies() {
-        viewModel.didLoad { [weak self] result in
-            switch result {
-            case .success():
-                DispatchQueue.main.async {
-                    self?.setupUI()
-                    self?.tableView.reloadData()
-                }
-            case .failure(let error):
-                self?.showAlert(with: "Error", message: error.rawValue, delay: 5)
-            }
-        }
+        self.viewModel.loadMovies()
     }
     
     private func setupUI() {
@@ -67,12 +57,13 @@ final class HomeViewController: UIViewController {
         tableView.delegate = viewModel.dataSource
         tableView.dataSource = viewModel.dataSource
         tableView.fillSuperview()
+        tableView.reloadData()
     }
     
     private func setupCallbacks() {
-        viewModel.dataSource.didUpdateData = { [weak self] in
+        viewModel.dataSource.didLoadData = { [weak self] in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.setupUI()
             }
         }
         viewModel.dataSource.didTapCell = { [weak self] movie in
@@ -80,6 +71,9 @@ final class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.viewModel.navigateToMovieDetails(in: navController, with: movie)
             }
+        }
+        viewModel.didSendError = { [weak self] error in
+            self?.showAlert(with: "Error", message: error.rawValue, delay: 5)
         }
     }
     

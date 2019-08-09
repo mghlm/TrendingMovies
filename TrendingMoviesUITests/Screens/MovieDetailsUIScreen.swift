@@ -9,7 +9,7 @@
 import XCTest
 
 enum MovieDetailsUIScreen {
-    case movieDetailsView, posterImageView, movieDetailsTitleLabel, movieDetailsDescriptionLabel
+    case movieDetailsView, posterImageView, movieDetailsTitleLabel, movieDetailsDescriptionLabel, releaseDateLabel, ratingLabel
     
     func component(in app: XCUIApplication) -> XCUIElement {
         switch self {
@@ -21,6 +21,10 @@ enum MovieDetailsUIScreen {
             return app.staticTexts["movieDetailsTitleLabelIdentifier"]
         case .movieDetailsDescriptionLabel:
             return app.staticTexts["movieDetailsDescriptionLabelIdentifier"]
+        case .releaseDateLabel:
+            return app.staticTexts["releaseDateLabelIdentifier"]
+        case .ratingLabel:
+            return app.staticTexts["ratingLabelIdentifier"]
         }
     }
     
@@ -29,6 +33,8 @@ enum MovieDetailsUIScreen {
         XCTAssert(MovieDetailsUIScreen.posterImageView.component(in: app).exists)
         XCTAssert(MovieDetailsUIScreen.movieDetailsTitleLabel.component(in: app).exists)
         XCTAssert(MovieDetailsUIScreen.movieDetailsDescriptionLabel.component(in: app).exists)
+        XCTAssert(MovieDetailsUIScreen.releaseDateLabel.component(in: app).exists)
+        XCTAssert(MovieDetailsUIScreen.ratingLabel.component(in: app).exists)
     }
     
     static func assertScreenDoesNotExist(in app: XCUIApplication) {
