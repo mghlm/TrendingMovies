@@ -38,15 +38,17 @@ final class HomeViewModel: HomeViewModelType {
     // MARK: - Private properties
     
     private var currentPage: Int = 1
+    
+    // MARK: - Public properties
+    
     var didSendError: ((NetworkError) -> Void)?
     
     // MARK: - Init
     
-    init(dataSource: HomeScreenDataSource, apiService: APIServiceType!, persistenceService: PersistenceServiceType) {
-        self.dataSource = dataSource
+    init(apiService: APIServiceType!, persistenceService: PersistenceServiceType, dataSource: HomeScreenDataSource) {
         self.apiService = apiService
         self.persistenceService = persistenceService
-        
+        self.dataSource = dataSource
     }
     
     // MARK: - Private methods

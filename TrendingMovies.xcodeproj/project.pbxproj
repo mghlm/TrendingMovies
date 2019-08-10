@@ -12,6 +12,7 @@
 		CC2CE4FF22FEEE5F00247E26 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2CE4FE22FEEE5F00247E26 /* movies.json */; };
 		CC2CE50122FEF7D600247E26 /* MovieDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50022FEF7D600247E26 /* MovieDetailsViewModelTests.swift */; };
 		CC2CE50322FEFC4F00247E26 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50222FEFC4F00247E26 /* RequestTests.swift */; };
+		CC2CE50522FF028F00247E26 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CC2CE50422FF028F00247E26 /* README.md */; };
 		CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F722F88A5D002E271A /* AppDelegate.swift */; };
 		CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F922F88A5D002E271A /* HomeViewController.swift */; };
 		CC4EE0FD22F88A5D002E271A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE0FB22F88A5D002E271A /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		CC2CE4FE22FEEE5F00247E26 /* movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		CC2CE50022FEF7D600247E26 /* MovieDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		CC2CE50222FEFC4F00247E26 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
+		CC2CE50422FF028F00247E26 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CC4EE0F422F88A5D002E271A /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4EE0F722F88A5D002E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4EE0F922F88A5D002E271A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		CC4EE0EB22F88A5D002E271A = {
 			isa = PBXGroup;
 			children = (
+				CC2CE50422FF028F00247E26 /* README.md */,
 				CC4EE0F622F88A5D002E271A /* TrendingMovies */,
 				CC4EE10E22F88A5F002E271A /* TrendingMoviesTests */,
 				CC4EE11922F88A5F002E271A /* TrendingMoviesUITests */,
@@ -428,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC2CE50522FF028F00247E26 /* README.md in Resources */,
 				CC2CE4FF22FEEE5F00247E26 /* movies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
