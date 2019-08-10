@@ -9,7 +9,6 @@
 import Foundation
 
 protocol MovieDetailsViewModelType {
-    
     /// Movie object to show in details screen
     var movie: Movie! { get }
 }

@@ -33,8 +33,12 @@ final class PersistenceService: PersistenceServiceType {
     
     // MARK: - Private properties
     
-    private var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
+    private var context: NSManagedObjectContext!
+    
+    // MARK: - Init
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
     }
     
     // MARK: - Public methods 
@@ -45,21 +49,19 @@ final class PersistenceService: PersistenceServiceType {
         do {
             try context.save()
             completion()
-        } catch let error {
-            print(error) // TODO: Error handilng
+        } catch let error as NSError {
+            print("Could not insert. \(error), \(error.userInfo)")
         }
     }
     
     func fetch<T: NSManagedObject>(_ type: T.Type, completion: @escaping ([T]) -> Void) {
         let request = NSFetchRequest<T>(entityName: String(describing: type))
-        let sort = NSSortDescriptor(key: "popularity", ascending: false)
-        request.sortDescriptors = [sort]
         
         do {
             let objects = try context.fetch(request)
             completion(objects)
-        } catch {
-            print(error) // TODO: Error handilng
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)") 
             completion([])
         }
     }
@@ -131,8 +133,8 @@ final class PersistenceService: PersistenceServiceType {
         do {
             try context.save()
         } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror)")
+            let error = error as NSError
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     

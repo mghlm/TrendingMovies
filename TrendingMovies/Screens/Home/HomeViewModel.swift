@@ -13,6 +13,9 @@ protocol HomeViewModelType {
     /// Data source responsible for implementing tableview delegate- and datasource methods and keeping state
     var dataSource: HomeScreenDataSource! { get }
     
+    /// Callback in case of network error
+    var didSendError: ((NetworkError) -> Void)? { get set }
+    
     /// Method to fetch initial data
     func loadMovies()
     
@@ -22,9 +25,6 @@ protocol HomeViewModelType {
     ///   - navigationController: Navigation controller to push new viewcontroller in
     ///   - movie: The model object of selected movie
     func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie)
-    
-    /// Callback in case of network error
-    var didSendError: ((NetworkError) -> Void)? { get set }
 }
 
 final class HomeViewModel: HomeViewModelType {
@@ -53,34 +53,36 @@ final class HomeViewModel: HomeViewModelType {
     
     func loadMovies() {
         apiService.request(endpoint: .getTrendingMovies(page: String(currentPage))) { [weak self] result in
-            guard let self = self else { return }
             switch result {
-                
             case .success(let movieResponse):
                 guard let movies = movieResponse["results"] as? [JSON] else { return }
-                self.persistenceService.insertMoviesInCoreData(movies: movies, completion: {
-                    self.persistenceService.fetch(Movie.self, completion: { [weak self] movies in
-                        guard let self = self else { return }
-                        self.dataSource.movies = movies
-                        self.persistenceService.addImageDataToMovies()
+                self?.persistenceService.insertMoviesInCoreData(movies: movies, completion: {
+                    self?.persistenceService.fetch(Movie.self, completion: { [weak self] movies in
+                        self?.dataSource.movies = self?.sorted(movies)
+                        self?.persistenceService.addImageDataToMovies()
                     })
                 })
-                
             case .failure(let error):
                 switch error {
-                case .decodeError, .invalidStatusCode:
-                    print("Error: \(error.rawValue)")
                 case .networkError:
-                    self.persistenceService.fetch(Movie.self, completion: { [weak self] movies in
+                    self?.persistenceService.fetch(Movie.self, completion: { [weak self] movies in
                         guard !movies.isEmpty else {
                             self?.didSendError?(error)
                             return
                         }
-                        self?.dataSource.movies = movies
+                        self?.dataSource.movies = self?.sorted(movies)
                     })
+                default:
+                    print(error.localizedDescription)
                 }
             }
         }
+    }
+    
+    // MARK: - Private methods
+    
+    func sorted(_ movies: [Movie]) -> [Movie] {
+        return movies.sorted(by: { $0.popularity > $1.popularity })
     }
 }
 

@@ -12,34 +12,37 @@ import XCTest
 final class APIServiceMock: APIServiceType {
     
     enum ApiResults {
-        case success, badStatusCode, decodeError, apiError
+        case success, badStatusCode, decodeError, networkError
     }
     
     var result: ApiResults = .success
+
+    var mockMovie: JSON = ["id" : 123,
+                           "original_language" : "en",
+                           "original_title" : "Interstellar",
+                           "overview" : "Space stuff",
+                           "popularity" : 999.999,
+                           "poster_path" : "https://imgur.com/123.jpg",
+                           "release_date" : "21.12.2009",
+                           "title" : "Interstellar",
+                           "vote_average" : 9.9,
+                           "vote_count" : 123
+    ]
     
-    var mockMovie = Movie(id: 1,
-                          originalLanguage: "English",
-                          originalTitle: "Interstellar",
-                          overview: "Space stuff",
-                          popularity: 123456,
-                          posterPath: "https://imgur.com/123.jpg",
-                          releaseDate: "12-12-2009",
-                          title: "Interstellar",
-                          voteAverage: 8.2,
-                          voteCount: 123456)
-    
-    func request<T: Decodable>(_ type: T.Type, endpoint: Endpoint, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func request(endpoint: Endpoint, completion: @escaping (Result<JSON, NetworkError>) -> Void) {
         switch result {
         case .success:
-            let model = MovieResponse(results: [mockMovie]) as! T
-            completion(.success(model))
+            let movieResponseMock = ["results": [mockMovie]] as JSON
+            completion(.success(movieResponseMock))
         case .badStatusCode:
             completion(.failure(.invalidStatusCode))
         case .decodeError:
             completion(.failure(.decodeError))
-        case .apiError:
-            completion(.failure(.apiError))
+        case .networkError:
+            completion(.failure(.networkError))
         }
     }
+    
+    func buildRequest(for endpoint: Endpoint) -> URLRequest? { return nil }
 }
 

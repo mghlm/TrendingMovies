@@ -61,5 +61,4 @@ final class HomeScreenTableViewCell: UITableViewCell {
         posterImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 0, width: 66, height: 76)
         titleLabel.anchor(top: topAnchor, left: posterImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
     }
-    
 }

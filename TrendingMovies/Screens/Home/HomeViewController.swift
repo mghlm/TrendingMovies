@@ -73,7 +73,9 @@ final class HomeViewController: UIViewController {
             }
         }
         viewModel.didSendError = { [weak self] error in
-            self?.showAlert(with: "Error", message: error.rawValue, delay: 5)
+            DispatchQueue.main.async {
+                self?.showAlert(with: "Error", message: error.rawValue, delay: 5)
+            }
         }
     }
     

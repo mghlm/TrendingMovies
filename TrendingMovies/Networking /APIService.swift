@@ -18,6 +18,11 @@ protocol APIServiceType {
     ///   - endpoint: Endoint with info about request sich as method and parameters
     ///   - completion: Result type, can either complete with JSON or Error
     func request(endpoint: Endpoint, completion: @escaping (Result<JSON, NetworkError>) -> Void)
+    
+    /// Builds a URLRequest for given endpoint
+    ///
+    /// - Parameter endpoint: Endpoint with details about request
+    func buildRequest(for endpoint: Endpoint) -> URLRequest?
 }
 
 final class APIService: APIServiceType {
@@ -59,7 +64,7 @@ final class APIService: APIServiceType {
         task.resume()
     }
     
-    private func buildRequest(for endpoint: Endpoint) -> URLRequest? {
+    func buildRequest(for endpoint: Endpoint) -> URLRequest? {
         var components = URLComponents()
         components.scheme = endpoint.scheme
         components.host = endpoint.host

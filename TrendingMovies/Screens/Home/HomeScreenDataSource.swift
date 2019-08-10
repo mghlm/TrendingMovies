@@ -18,7 +18,6 @@ final class HomeScreenDataSource: NSObject {
         }
     }
     var didLoadData: (() -> Void)?
-//    var didUpdateData: (() -> Void)?
     var didTapCell: ((Movie) -> ())?
 }
 
