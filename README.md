@@ -57,7 +57,7 @@ To test the app simply clone the repo, and build in latest version of Xcode. No 
 
 
 
-### User stories for MVP:
+### User stories:
 
 
 
@@ -69,12 +69,17 @@ As a user I can see the 20 most popular movies in UK for the current day in a li
 
 ```
 
-As a user I can see details about a selected movie such as release date and rating
+As a user I can see details about a selected movie, such as release date and rating, in a new screen 
 
 ```
 
 ```
 
-As a user I can still see the last 20 movies that was loaded, in case I am offline
+As a user, if I am offline, I can still see the last 20 movies that was loaded
+
+```
+```
+
+As a user, if I'm offline and open the app for the first time, I will see an error message
 
 ```
