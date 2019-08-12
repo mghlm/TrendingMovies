@@ -15,12 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        PersistenceService.applicationDocumentsDirectory()
         window = UIWindow()
         window?.makeKeyAndVisible()
-        let viewModel = HomeViewModel(dataSource: HomeScreenDataSource(),
-                                      apiService: APIService(),
-                                      persistenceService: PersistenceService(context: persistentContainer.viewContext))
+        let viewModel = HomeViewModel(apiService: APIService(),
+                                      persistenceService: PersistenceService(context: persistentContainer.viewContext),
+                                      dataSource: HomeScreenDataSource())
         window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: viewModel))
         return true
     }

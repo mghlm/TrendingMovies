@@ -92,7 +92,7 @@ final class PersistenceService: PersistenceServiceType {
         do {
             let results = try context.fetch(request)
             results.forEach { context.delete($0) }
-            save()
+            try context.save()
         } catch {
             print(error)
         }
@@ -126,36 +126,6 @@ final class PersistenceService: PersistenceServiceType {
             return movieEntity
         }
         return nil 
-    }
-    
-    private func save() {
-        guard context.hasChanges else { return }
-        do {
-            try context.save()
-        } catch {
-            let error = error as NSError
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
-    // MARK: - Container
-    
-    private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TrendingMovies")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Debug
-    
-    static func applicationDocumentsDirectory() {
-        if let url = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).last {
-            print(url.absoluteString)
-        }
     }
 }
 

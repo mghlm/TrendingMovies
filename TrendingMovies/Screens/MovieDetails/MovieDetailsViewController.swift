@@ -52,6 +52,15 @@ final class MovieDetailsViewController: UIViewController {
     
     // MARK: - Private methods
     
+    private func setupUI() {
+        view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = viewModel.movie.title
+        view.addSubview(contentView)
+        setupConstraints()
+        setupMovieDetailsView()
+    }
+    
     private func setupMovieDetailsView() {
         contentView.addSubview(scrollView)
         movieDetailsView = MovieDetailsView(frame: .zero, movie: viewModel.movie)
@@ -60,15 +69,6 @@ final class MovieDetailsViewController: UIViewController {
         scrollView.fillSuperview()
         movieDetailsView.fillSuperview()
         movieDetailsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-    }
-    
-    private func setupUI() {
-        view.backgroundColor = .white
-        navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = viewModel.movie.title
-        view.addSubview(contentView)
-        setupConstraints()
-        setupMovieDetailsView()
     }
     
     private func setupConstraints() {

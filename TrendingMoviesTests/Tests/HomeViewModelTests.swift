@@ -22,7 +22,7 @@ class HomeViewModelTests: XCTestCase {
         apiService = APIServiceMock()
         contextMock = CoreDataHelpers().contextMock
         persistenceService = PersistenceService(context: contextMock)
-        viewModel = HomeViewModel(dataSource: HomeScreenDataSource(), apiService: apiService, persistenceService: persistenceService)
+        viewModel = HomeViewModel(apiService: apiService, persistenceService: persistenceService, dataSource: HomeScreenDataSource())
     }
     
     func testDatasourceSetup() {

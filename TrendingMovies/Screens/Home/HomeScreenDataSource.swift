@@ -17,7 +17,11 @@ final class HomeScreenDataSource: NSObject {
             didLoadData?()
         }
     }
+    
+    /// To call when data is finished loading
     var didLoadData: (() -> Void)?
+    
+    /// To call when movie is selected
     var didTapCell: ((Movie) -> ())?
 }
 
