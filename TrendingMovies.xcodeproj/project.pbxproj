@@ -14,6 +14,8 @@
 		CC2CE50322FEFC4F00247E26 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50222FEFC4F00247E26 /* RequestTests.swift */; };
 		CC2CE50522FF028F00247E26 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CC2CE50422FF028F00247E26 /* README.md */; };
 		CC2CE50C2309A1F900247E26 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50B2309A1F900247E26 /* Coordinator.swift */; };
+		CC2CE50E2309A4CB00247E26 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */; };
+		CC2CE5102309A93A00247E26 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */; };
 		CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F722F88A5D002E271A /* AppDelegate.swift */; };
 		CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F922F88A5D002E271A /* HomeViewController.swift */; };
 		CC4EE0FD22F88A5D002E271A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE0FB22F88A5D002E271A /* Main.storyboard */; };
@@ -66,6 +68,8 @@
 		CC2CE50222FEFC4F00247E26 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		CC2CE50422FF028F00247E26 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CC2CE50B2309A1F900247E26 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		CC4EE0F422F88A5D002E271A /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4EE0F722F88A5D002E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4EE0F922F88A5D002E271A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2CE50B2309A1F900247E26 /* Coordinator.swift */,
+				CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				CC4EE0F922F88A5D002E271A /* HomeViewController.swift */,
 				CC4EE12922F88BB1002E271A /* HomeViewModel.swift */,
 				CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */,
+				CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -484,7 +490,9 @@
 				CC4EE14522F8A093002E271A /* MovieDetailsViewController.swift in Sources */,
 				CC4EE15B22FAC101002E271A /* PersistenceService.swift in Sources */,
 				CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */,
+				CC2CE50E2309A4CB00247E26 /* AppCoordinator.swift in Sources */,
 				CC4EE12A22F88BB1002E271A /* HomeViewModel.swift in Sources */,
+				CC2CE5102309A93A00247E26 /* HomeCoordinator.swift in Sources */,
 				CC4EE14122F89D5C002E271A /* ImageLoader.swift in Sources */,
 				CC4EE15F22FAC465002E271A /* Movie+CoreDataProperties.swift in Sources */,
 			);
