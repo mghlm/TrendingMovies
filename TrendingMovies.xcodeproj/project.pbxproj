@@ -222,8 +222,8 @@
 				CC4EE12E22F88CD6002E271A /* Views */,
 				CC4EE0F922F88A5D002E271A /* HomeViewController.swift */,
 				CC4EE12922F88BB1002E271A /* HomeViewModel.swift */,
-				CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */,
 				CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */,
+				CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

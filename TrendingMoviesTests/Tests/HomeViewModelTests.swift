@@ -21,7 +21,7 @@ class HomeViewModelTests: XCTestCase {
     override func setUp() {
         apiService = APIServiceMock()
         contextMock = CoreDataHelpers().contextMock
-        persistenceService = PersistenceService(context: contextMock)
+        persistenceService = PersistenceService()
         viewModel = HomeViewModel(apiService: apiService, persistenceService: persistenceService, dataSource: HomeScreenDataSource())
     }
     

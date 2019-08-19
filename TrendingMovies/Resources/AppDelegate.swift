@@ -22,25 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         appCoordinator.start()
-        
-//        window?.makeKeyAndVisible()
-//        let viewModel = HomeViewModel(apiService: APIService(),
-//                                      persistenceService: PersistenceService(context: persistentContainer.viewContext),
-//                                      dataSource: HomeScreenDataSource())
-//        window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: viewModel))
         return true
     }
-    
-    // MARK: - Core Data
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TrendingMovies")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
 }
 

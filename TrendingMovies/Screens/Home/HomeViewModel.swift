@@ -34,6 +34,7 @@ final class HomeViewModel: HomeViewModelType {
     private var apiService: APIServiceType!
     private var persistenceService: PersistenceServiceType!
     var dataSource: HomeScreenDataSource!
+    var coordinator: HomeCoordinator!
     
     // MARK: - Private properties
     
@@ -45,10 +46,11 @@ final class HomeViewModel: HomeViewModelType {
     
     // MARK: - Init
     
-    init(apiService: APIServiceType!, persistenceService: PersistenceServiceType, dataSource: HomeScreenDataSource) {
+    init(apiService: APIServiceType!, persistenceService: PersistenceServiceType, dataSource: HomeScreenDataSource, coordinator: HomeCoordinator) {
         self.apiService = apiService
         self.persistenceService = persistenceService
         self.dataSource = dataSource
+        self.coordinator = coordinator
     }
     
     // MARK: - Private methods
@@ -92,8 +94,6 @@ final class HomeViewModel: HomeViewModelType {
 
 extension HomeViewModel {
     func navigateToMovieDetails(in navigationController: UINavigationController, with movie: Movie) {
-        let movieDetailsViewModel = MovieDetailsViewModel(movie: movie)
-        let movieDetailsViewController = MovieDetailsViewController(viewModel: movieDetailsViewModel)
-        navigationController.pushViewController(movieDetailsViewController, animated: true)
+        coordinator.navigateToMovieDetails(with: movie)
     }
 }

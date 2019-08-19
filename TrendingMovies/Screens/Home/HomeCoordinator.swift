@@ -9,8 +9,13 @@
 import UIKit
 
 class HomeCoordinator: Coordinator {
+    
+    // MARK: - Public properties
+    
     var childCoordinators: [String : Coordinator]
     var navigationController: UINavigationController
+    
+    // MARK: - Init
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -19,8 +24,17 @@ class HomeCoordinator: Coordinator {
         start()
     }
     
+    // MARK: - Public methods 
+    
     func start() {
-        let viewModel = HomeViewModel(apiService: APIService(), persistenceService: PersistenceService(), dataSource: HomeScreenDataSource())
-        navigationController.pushViewController(HomeViewController(viewModel: viewModel), animated: false)
+        let viewModel = HomeViewModel(apiService: APIService(), persistenceService: PersistenceService(), dataSource: HomeScreenDataSource(), coordinator: self)
+        let homeViewController = HomeViewController(viewModel: viewModel)
+        navigationController.pushViewController(homeViewController, animated: false)
+    }
+    
+    func navigateToMovieDetails(with movie: Movie) {
+        let movieDetailsViewModel = MovieDetailsViewModel(movie: movie)
+        let movieDetailsViewController = MovieDetailsViewController(viewModel: movieDetailsViewModel)
+        navigationController.pushViewController(movieDetailsViewController, animated: true)
     }
 }
