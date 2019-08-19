@@ -16,6 +16,7 @@
 		CC2CE50C2309A1F900247E26 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50B2309A1F900247E26 /* Coordinator.swift */; };
 		CC2CE50E2309A4CB00247E26 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */; };
 		CC2CE5102309A93A00247E26 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */; };
+		CC2CE514230A9B6600247E26 /* HomeCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE513230A9B6600247E26 /* HomeCoordinatorMock.swift */; };
 		CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F722F88A5D002E271A /* AppDelegate.swift */; };
 		CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F922F88A5D002E271A /* HomeViewController.swift */; };
 		CC4EE0FD22F88A5D002E271A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE0FB22F88A5D002E271A /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		CC2CE50B2309A1F900247E26 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		CC2CE513230A9B6600247E26 /* HomeCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorMock.swift; sourceTree = "<group>"; };
 		CC4EE0F422F88A5D002E271A /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4EE0F722F88A5D002E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4EE0F922F88A5D002E271A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4EE14E22F9A9AD002E271A /* APIServiceMock.swift */,
+				CC2CE513230A9B6600247E26 /* HomeCoordinatorMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			files = (
 				CC4EE14F22F9A9AD002E271A /* APIServiceMock.swift in Sources */,
 				CC2CE50322FEFC4F00247E26 /* RequestTests.swift in Sources */,
+				CC2CE514230A9B6600247E26 /* HomeCoordinatorMock.swift in Sources */,
 				CC2CE4BC22FD9FBC00247E26 /* CoreDataHelpers.swift in Sources */,
 				CC2CE4FD22FEDB9A00247E26 /* DataReader.swift in Sources */,
 				CC2CE50122FEF7D600247E26 /* MovieDetailsViewModelTests.swift in Sources */,

@@ -34,7 +34,7 @@ final class HomeViewModel: HomeViewModelType {
     private var apiService: APIServiceType!
     private var persistenceService: PersistenceServiceType!
     var dataSource: HomeScreenDataSource!
-    var coordinator: HomeCoordinator!
+    var coordinator: HomeCoordinatorType!
     
     // MARK: - Private properties
     
@@ -46,7 +46,7 @@ final class HomeViewModel: HomeViewModelType {
     
     // MARK: - Init
     
-    init(apiService: APIServiceType!, persistenceService: PersistenceServiceType, dataSource: HomeScreenDataSource, coordinator: HomeCoordinator) {
+    init(apiService: APIServiceType!, persistenceService: PersistenceServiceType, dataSource: HomeScreenDataSource, coordinator: HomeCoordinatorType) {
         self.apiService = apiService
         self.persistenceService = persistenceService
         self.dataSource = dataSource

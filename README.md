@@ -8,7 +8,7 @@
 
 ### Approach taken
 
-The app is built using a simple MVVM-C architecture, where the ViewModel for each screen is responsible for the business logic (such as communicating with the networking and storage layers), and Coordinators are implemented for navigation. The ViewControllers have been kept simple and "dumb" and is only responsible for presenting UI. 
+The app is built using a simple MVVM-C architecture, where the ViewModel for each screen is responsible for the business logic (such as communicating with the networking and storage layers), and Coordinators are implemented for navigation. The ViewControllers have been kept simple and is only responsible for presenting UI. 
 
 The app persist the the movie objects and their related image data in a Core Data database, and will present the stored data if user is offline. 
 

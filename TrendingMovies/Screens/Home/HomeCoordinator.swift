@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
+protocol HomeCoordinatorType: Coordinator {
+    func navigateToMovieDetails(with movie: Movie)
+}
+
+final class HomeCoordinator: HomeCoordinatorType {
     
     // MARK: - Public properties
     
