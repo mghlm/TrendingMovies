@@ -33,12 +33,8 @@ final class PersistenceService: PersistenceServiceType {
     
     // MARK: - Private properties
     
-    private var context: NSManagedObjectContext!
-    
-    // MARK: - Init
-    
-    init(context: NSManagedObjectContext) {
-        self.context = context
+    private var context: NSManagedObjectContext {
+        return self.persistentContainer.viewContext
     }
     
     // MARK: - Public methods 
@@ -127,5 +123,18 @@ final class PersistenceService: PersistenceServiceType {
         }
         return nil 
     }
+    
+    // Container
+    
+    private lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "TrendingMovies")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
 }
 

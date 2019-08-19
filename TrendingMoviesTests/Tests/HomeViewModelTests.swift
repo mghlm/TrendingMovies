@@ -15,14 +15,16 @@ class HomeViewModelTests: XCTestCase {
     var viewModel: HomeViewModelType!
     var apiService: APIServiceMock!
     var persistenceService: PersistenceServiceType!
+    var coordinator: HomeCoordinatorType!
     
     var contextMock: NSManagedObjectContext!
     
     override func setUp() {
         apiService = APIServiceMock()
         contextMock = CoreDataHelpers().contextMock
-        persistenceService = PersistenceService(context: contextMock)
-        viewModel = HomeViewModel(apiService: apiService, persistenceService: persistenceService, dataSource: HomeScreenDataSource())
+        persistenceService = PersistenceService()
+        coordinator = HomeCoordinatorMock(navigationController: UINavigationController())
+        viewModel = HomeViewModel(apiService: apiService, persistenceService: persistenceService, dataSource: HomeScreenDataSource(), coordinator: coordinator)
     }
     
     func testDatasourceSetup() {

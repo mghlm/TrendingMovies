@@ -13,6 +13,10 @@
 		CC2CE50122FEF7D600247E26 /* MovieDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50022FEF7D600247E26 /* MovieDetailsViewModelTests.swift */; };
 		CC2CE50322FEFC4F00247E26 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50222FEFC4F00247E26 /* RequestTests.swift */; };
 		CC2CE50522FF028F00247E26 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CC2CE50422FF028F00247E26 /* README.md */; };
+		CC2CE50C2309A1F900247E26 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50B2309A1F900247E26 /* Coordinator.swift */; };
+		CC2CE50E2309A4CB00247E26 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */; };
+		CC2CE5102309A93A00247E26 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */; };
+		CC2CE514230A9B6600247E26 /* HomeCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2CE513230A9B6600247E26 /* HomeCoordinatorMock.swift */; };
 		CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F722F88A5D002E271A /* AppDelegate.swift */; };
 		CC4EE0FA22F88A5D002E271A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4EE0F922F88A5D002E271A /* HomeViewController.swift */; };
 		CC4EE0FD22F88A5D002E271A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4EE0FB22F88A5D002E271A /* Main.storyboard */; };
@@ -64,6 +68,10 @@
 		CC2CE50022FEF7D600247E26 /* MovieDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		CC2CE50222FEFC4F00247E26 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		CC2CE50422FF028F00247E26 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CC2CE50B2309A1F900247E26 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		CC2CE513230A9B6600247E26 /* HomeCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorMock.swift; sourceTree = "<group>"; };
 		CC4EE0F422F88A5D002E271A /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4EE0F722F88A5D002E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4EE0F922F88A5D002E271A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +151,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		CC2CE50A2309A1ED00247E26 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CC2CE50B2309A1F900247E26 /* Coordinator.swift */,
+				CC2CE50D2309A4CB00247E26 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		CC4EE0EB22F88A5D002E271A = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +184,7 @@
 		CC4EE0F622F88A5D002E271A /* TrendingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				CC2CE50A2309A1ED00247E26 /* Coordinator */,
 				CC4EE14222F8A07B002E271A /* Screens */,
 				CC4EE13122F88D0C002E271A /* Networking  */,
 				CC4EE13C22F8918D002E271A /* Models */,
@@ -206,6 +224,7 @@
 				CC4EE12E22F88CD6002E271A /* Views */,
 				CC4EE0F922F88A5D002E271A /* HomeViewController.swift */,
 				CC4EE12922F88BB1002E271A /* HomeViewModel.swift */,
+				CC2CE50F2309A93A00247E26 /* HomeCoordinator.swift */,
 				CC4EE13A22F89138002E271A /* HomeScreenDataSource.swift */,
 			);
 			path = Home;
@@ -285,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4EE14E22F9A9AD002E271A /* APIServiceMock.swift */,
+				CC2CE513230A9B6600247E26 /* HomeCoordinatorMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -466,13 +486,16 @@
 				CC4EE14722F8A09F002E271A /* MovieDetailsViewModel.swift in Sources */,
 				CC4EE13522F88D43002E271A /* Endpoint .swift in Sources */,
 				CC4EE10022F88A5D002E271A /* TrendingMovies.xcdatamodeld in Sources */,
+				CC2CE50C2309A1F900247E26 /* Coordinator.swift in Sources */,
 				CC4EE12D22F88C2F002E271A /* UIView+Extensions.swift in Sources */,
 				CC4EE13B22F89138002E271A /* HomeScreenDataSource.swift in Sources */,
 				CC4EE13722F88EEE002E271A /* URLSession+Extensoins.swift in Sources */,
 				CC4EE14522F8A093002E271A /* MovieDetailsViewController.swift in Sources */,
 				CC4EE15B22FAC101002E271A /* PersistenceService.swift in Sources */,
 				CC4EE0F822F88A5D002E271A /* AppDelegate.swift in Sources */,
+				CC2CE50E2309A4CB00247E26 /* AppCoordinator.swift in Sources */,
 				CC4EE12A22F88BB1002E271A /* HomeViewModel.swift in Sources */,
+				CC2CE5102309A93A00247E26 /* HomeCoordinator.swift in Sources */,
 				CC4EE14122F89D5C002E271A /* ImageLoader.swift in Sources */,
 				CC4EE15F22FAC465002E271A /* Movie+CoreDataProperties.swift in Sources */,
 			);
@@ -484,6 +507,7 @@
 			files = (
 				CC4EE14F22F9A9AD002E271A /* APIServiceMock.swift in Sources */,
 				CC2CE50322FEFC4F00247E26 /* RequestTests.swift in Sources */,
+				CC2CE514230A9B6600247E26 /* HomeCoordinatorMock.swift in Sources */,
 				CC2CE4BC22FD9FBC00247E26 /* CoreDataHelpers.swift in Sources */,
 				CC2CE4FD22FEDB9A00247E26 /* DataReader.swift in Sources */,
 				CC2CE50122FEF7D600247E26 /* MovieDetailsViewModelTests.swift in Sources */,
